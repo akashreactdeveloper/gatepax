@@ -4,9 +4,9 @@ import { Outlet } from 'react-router-dom';
 
 const Layout = ({ title }) => {
     return (
-        <div className='flex max-h-screen bg-white'>
+        <div className='flex min-h-screen bg-white z-10'>
             <Sidebar className='shadow-black shadow-lg' />
-            <div className='flex-1 ml-64 h-screen relative'>
+            <div className='flex-1 md:ml-64 relative'>
                 <div className='absolute top-4 right-4'>
                     <button
                         type="button"
@@ -15,7 +15,7 @@ const Layout = ({ title }) => {
                         E
                     </button>
                 </div>
-                <div className='mt-20 mx-10'>
+                <div className='mt-20 px-10'>
                     <h1 className='mb-2 text-xl font-semibold text-blue-600'>{title}</h1>
                     <Outlet />
                 </div>

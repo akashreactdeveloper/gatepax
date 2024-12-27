@@ -7,8 +7,32 @@ const formConfig = {
     ]
 };
 
-const EmailHeaderFiltering = () => {
+const logicOptions = [
+    { value: 'and', label: 'AND' },
+    { value: 'or', label: 'OR' }
+];
 
+const operatorOptions = [
+    { value: 'equals', label: 'Equal to (case insensitive)' },
+    { value: 'notEquals', label: 'Not equal to' },
+    { value: 'notEqualsCI', label: 'Not equal to (case insensitive)' },
+    { value: 'contains', label: 'Contains' },
+    { value: 'containsCI', label: 'Contains (case insensitive)' },
+    { value: 'doesNotContain', label: 'Does not contain' },
+    { value: 'doesNotContainCI', label: 'Does not contain (case insensitive)' },
+    { value: 'startsWith', label: 'Start with' },
+    { value: 'startsWithCI', label: 'Start with (case insensitive)' },
+    { value: 'doesNotStartWith', label: 'Does not start with' },
+    { value: 'doesNotStartWithCI', label: 'Does not start with (case insensitive)' },
+    { value: 'endsWith', label: 'End with' },
+    { value: 'endsWithCI', label: 'End with (case insensitive)' },
+    { value: 'doesNotEndWith', label: 'Does not end with' },
+    { value: 'doesNotEndWithCI', label: 'Does not end with (case insensitive)' },
+    { value: 'matchesPattern', label: 'Matches pattern' },
+    { value: 'matchesPatternCI', label: 'Matches pattern (case insensitive)' }
+];
+
+const EmailHeaderFiltering = () => {
     return (
         <div className='bg-white px-4 sm:px-6'>
             <div className='max-h-[calc(100vh-140px)] overflow-y-scroll hide-scrollbar'>
@@ -25,8 +49,9 @@ const EmailHeaderFiltering = () => {
                                 <label className='flex flex-col'>
                                     Logic
                                     <select className='mt-1 p-2 rounded border-gray-600 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 select-custom'>
-                                        <option value="and">AND</option>
-                                        <option value="or">OR</option>
+                                        {logicOptions.map(option => (
+                                            <option key={option.value} value={option.value}>{option.label}</option>
+                                        ))}
                                     </select>
                                 </label>
                                 <label className='flex flex-col'>
@@ -38,23 +63,9 @@ const EmailHeaderFiltering = () => {
                                 <label className='flex flex-col'>
                                     Operator
                                     <select className='mt-1 p-2 rounded border-gray-600 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 select-custom'>
-                                        <option value="equals">Equal to (case insensitive)</option>
-                                        <option value="notEquals">Not equal to</option>
-                                        <option value="notEqualsCI">Not equal to (case insensitive)</option>
-                                        <option value="contains">Contains</option>
-                                        <option value="containsCI">Contains (case insensitive)</option>
-                                        <option value="doesNotContain">Does not contain</option>
-                                        <option value="doesNotContainCI">Does not contain (case insensitive)</option>
-                                        <option value="startsWith">Start with</option>
-                                        <option value="startsWithCI">Start with (case insensitive)</option>
-                                        <option value="doesNotStartWith">Does not start with</option>
-                                        <option value="doesNotStartWithCI">Does not start with (case insensitive)</option>
-                                        <option value="endsWith">End with</option>
-                                        <option value="endsWithCI">End with (case insensitive)</option>
-                                        <option value="doesNotEndWith">Does not end with</option>
-                                        <option value="doesNotEndWithCI">Does not end with (case insensitive)</option>
-                                        <option value="matchesPattern">Matches pattern</option>
-                                        <option value="matchesPatternCI">Matches pattern (case insensitive)</option>
+                                        {operatorOptions.map(option => (
+                                            <option key={option.value} value={option.value}>{option.label}</option>
+                                        ))}
                                     </select>
                                 </label>
                             </div>
